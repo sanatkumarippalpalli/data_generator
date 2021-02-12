@@ -106,9 +106,14 @@ freq = input_data['sampling']
 data['Time'] = pd.date_range(start=start, periods=len(data) , freq=freq)
 data.set_index('Time', inplace=True)
 data.dropna(axis=0, inplace=True)
-for output in outputs:
+is_noise = input_data['add_noise']
+noise_std = list(input_data['output_noise_std'].values())
+for idx, output in enumerate(outputs):
     detrended = detrend(data[output])
-    data[output] = detrended + abs(min(detrended))
+    if is_noise:
+        data[output] = detrended + abs(min(detrended)) + np.random.normal(0,noise_std[idx],len(detrended))
+    else:
+        data[output] = detrended + abs(min(detrended))
 
 out_file = input_data['outputfilename']
 data.iloc[21:].to_csv(out_file)
