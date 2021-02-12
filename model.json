@@ -1,0 +1,30 @@
+{
+    "outputfilename" : "steptest_2x2.csv",
+    "data_length" : 25000,
+    "time_to_steady_state" : 100,
+    "sampling" : "10s",
+    "start_date" : "1/1/2010",
+    "range" : {
+        "input1" : [0,10],
+        "input2" : [0,100]
+    },
+    "input_switch_probability":{
+        "input1" : [30, 60],
+        "input2" : [50, 80]        
+    },
+    "input_block_size":{
+        "input1" : 400,
+        "input2" : 600        
+    },
+    "models":{
+        "y1":{
+            "u1": [[-5],[20,1],15],
+            "u2" : null
+        },
+        "y2":{
+            "u1": null,
+            "u2" : [[5],[5,0],0]
+        }
+    }
+
+}
