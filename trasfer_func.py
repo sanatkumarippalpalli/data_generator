@@ -20,7 +20,6 @@ G33 = tf([-0.065],  [120, 1], deadtime=95)
 G34 = NoModel
 G35 = NoModel
 G36 = NoModel
-G = tf([1],[5, 1],deadtime=500)
 
 G = mimotf([
             [G11, G12, G13, G14, G15, G16], 
